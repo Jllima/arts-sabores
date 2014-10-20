@@ -1,18 +1,9 @@
 package br.com.artssabores.fragments;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,10 +11,11 @@ import org.json.JSONObject;
 import br.com.artssabores.R;
 import br.com.artssabores.adapter.ProdutoListAdapter;
 import br.com.artssabores.model.Produto;
+import br.com.artssabores.util.HttpUtil;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,7 +24,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class ProdutosFragment extends Fragment {
@@ -40,6 +34,8 @@ public class ProdutosFragment extends Fragment {
 	private static final String JSON = "Json";
 
 	private ProgressDialog dialog;
+
+	ProdutoListAdapter adaptador;
 
 	List<Produto> produtoList;
 
@@ -61,7 +57,18 @@ public class ProdutosFragment extends Fragment {
 
 		lv = (ListView) view.findViewById(R.id.produto_list);
 
-		lv.setOnItemClickListener(new SlideMenuClickListener());
+		lv.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Produto p = (Produto) adaptador.getItem(position);
+				String s = p.getNome();
+
+				Toast.makeText(getActivity(), "Contato selecionado: " + s,
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		return view;
 	}
@@ -69,32 +76,20 @@ public class ProdutosFragment extends Fragment {
 	/**
 	 * Slide menu item click listener
 	 * */
-	private class SlideMenuClickListener implements
-			ListView.OnItemClickListener {
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			// display view for selected nav drawer item
-			displayView(position);
-		}
-
-		private void displayView(int position) {
-			switch (position) {
-			case 0:
-				Log.d("0", "Aqui");
-				break;
-			case 1:
-				Log.d("1", "Aqui");
-				break;
-			case 2:
-				Log.d("2", "Aqui");
-				break;
-			default:
-				break;
-			}
-			
-		}
-	}
+	/*
+	 * private class SlideMenuClickListener implements
+	 * ListView.OnItemClickListener {
+	 * 
+	 * @Override public void onItemClick(AdapterView<?> parent, View view, int
+	 * position, long id) { // display view for selected nav drawer item
+	 * displayView(position); }
+	 * 
+	 * private void displayView(int position) { switch (position) { case 0:
+	 * Log.d("0", "Aqui"); break; case 1: Log.d("1", "Aqui"); break; case 2:
+	 * Log.d("2", "Aqui"); break; default: break; }
+	 * 
+	 * } }
+	 */
 
 	class ProdutosJson extends AsyncTask<String, String, String> {
 
@@ -111,21 +106,14 @@ public class ProdutosFragment extends Fragment {
 		@Override
 		protected String doInBackground(String... params) {
 			String urlString = "http://192.168.43.119:8080/apirest/services/produtos/listargson";
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpGet httpget = new HttpGet(urlString);
-			try {
-				HttpResponse response = httpclient.execute(httpget);
-				HttpEntity entity = response.getEntity();
-				if (entity != null) {
-					InputStream instream = entity.getContent();
-					String json = getStringFromInputStream(instream);
-					instream.close();
-					produtoList = getProdutos(json);
 
-				}
-			} catch (Exception e) {
-				Log.d(JSON, "Falha ao acessar Web service", e);
+			try {
+				String json = HttpUtil.getInstance().httpGetJson(urlString);
+				produtoList = getProdutos(json);
+			} catch (Throwable e) {
+				Log.i("ERRO", e.getMessage(), e);
 			}
+
 			return null;
 		}
 
@@ -133,12 +121,27 @@ public class ProdutosFragment extends Fragment {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			dialog.dismiss();
-
-			lv.setAdapter(new ProdutoListAdapter(getActivity(), produtoList));
-
+			if (produtoList.size() > 0) {
+				adaptador = new ProdutoListAdapter(getActivity(), produtoList);
+				lv.setAdapter(adaptador);
+			} else {
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						getActivity())
+						.setTitle("ATENÇÂO")
+						.setMessage(
+								"Não foi possivel carregar as cestas via ws, sera apresentado um exemplo teste")
+						.setPositiveButton("OK", null);
+				builder.create().show();
+				for (int i = 0; i < 5; i++) {
+					Long id = (long) i;
+					Produto produto = new Produto(id, "teste", "exemplo teste",
+							32.30);
+					produtoList.add(produto);
+				}
+				adaptador = new ProdutoListAdapter(getActivity(), produtoList);
+				lv.setAdapter(adaptador);
+			}
 		}
-
-		
 
 		// Retorna uma lista de pessoas com as informações retornadas do JSON
 		private List<Produto> getProdutos(String json) {
@@ -165,32 +168,5 @@ public class ProdutosFragment extends Fragment {
 			return produtos;
 		}
 
-		// Converte objeto InputStream para String
-		private String getStringFromInputStream(InputStream is) {
-			BufferedReader br = null;
-			StringBuilder sb = new StringBuilder();
-
-			String line;
-			try {
-
-				br = new BufferedReader(new InputStreamReader(is));
-				while ((line = br.readLine()) != null) {
-					sb.append(line);
-				}
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-				if (br != null) {
-					try {
-						br.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
-			return sb.toString();
-		}
 	}
 }

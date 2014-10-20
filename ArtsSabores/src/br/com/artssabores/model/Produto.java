@@ -13,6 +13,15 @@ public class Produto implements Serializable{
 	private String descricao;
 	private Double preco;
 
+	public Produto() {}
+	
+	public Produto(Long id,String nome, String descricao, Double preco){
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.preco = preco;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
