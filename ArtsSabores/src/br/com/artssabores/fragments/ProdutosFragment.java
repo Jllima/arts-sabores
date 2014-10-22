@@ -73,24 +73,6 @@ public class ProdutosFragment extends Fragment {
 		return view;
 	}
 
-	/**
-	 * Slide menu item click listener
-	 * */
-	/*
-	 * private class SlideMenuClickListener implements
-	 * ListView.OnItemClickListener {
-	 * 
-	 * @Override public void onItemClick(AdapterView<?> parent, View view, int
-	 * position, long id) { // display view for selected nav drawer item
-	 * displayView(position); }
-	 * 
-	 * private void displayView(int position) { switch (position) { case 0:
-	 * Log.d("0", "Aqui"); break; case 1: Log.d("1", "Aqui"); break; case 2:
-	 * Log.d("2", "Aqui"); break; default: break; }
-	 * 
-	 * } }
-	 */
-
 	class ProdutosJson extends AsyncTask<String, String, String> {
 
 		@Override
