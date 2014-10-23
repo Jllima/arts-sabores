@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import br.com.artssabores.R;
+import br.com.artssabores.activity.ProdutoViewActivity;
 import br.com.artssabores.adapter.ProdutoListAdapter;
 import br.com.artssabores.model.Produto;
 import br.com.artssabores.util.HttpUtil;
@@ -17,6 +18,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,11 +64,16 @@ public class ProdutosFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Produto p = (Produto) adaptador.getItem(position);
-				String s = p.getNome();
+				//Produto p = (Produto) adaptador.getItem(position);
+				//String s = p.getNome();
+				
+				Intent it = new Intent(getActivity(),ProdutoViewActivity.class);
+				it.putExtra("Nome", produtoList.get(position).getNome());
+				it.putExtra("Descricao", produtoList.get(position).getDescricao());
+				startActivity(it);
 
-				Toast.makeText(getActivity(), "Contato selecionado: " + s,
-						Toast.LENGTH_SHORT).show();
+				//Toast.makeText(getActivity(), "Contato selecionado: " + s,
+					//	Toast.LENGTH_SHORT).show();
 			}
 		});
 

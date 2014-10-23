@@ -24,6 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name=".activity.ProdutoViewActivity"
+            android:parentActivityName="br.com.artssabores.activity.MainActivity">
+            <!-- To support split actionbar below API Level 14 -->
+            <meta-data android:name="android.support.UI_OPTIONS"
+                   android:value="splitActionBarWhenNarrow" />
+            
+        </activity>
     </application>
 
 </manifest>
