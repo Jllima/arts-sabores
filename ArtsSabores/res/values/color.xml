@@ -16,6 +16,9 @@
     <color name="transparent">#00000000</color>
 
     <!-- Status para as lista -->
+    <color name="navigation_items_w">#ffffff</color>
+
+    <!-- Status para as lista -->
     <color name="navigation_view">#DADADC</color>
     <color name="navigation_items">#303030</color>
     <color name="gray_navegation">#ffffff</color>
@@ -29,5 +32,6 @@
     <color name="green_dark">#669900</color>
     <color name="orange_dark">#FF8800</color>
     <color name="red_dark">#CC0000</color>
+    <color name="braid_darck">#D6C2C2</color>
 
 </resources>

@@ -15,7 +15,7 @@
     <style name="LiveoActionBar" parent="@style/Widget.AppCompat.ActionBar">
         <item name="android:titleTextStyle">@style/Liveo.TitleTextStyle</item>
         <item name="android:subtitleTextStyle">@style/Liveo.SubTitleTextStyle</item>
-        <item name="android:background">@color/blue_light</item>
+        <item name="android:background">@color/braid_darck</item>
     </style>
 
     <style name="Liveo.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
