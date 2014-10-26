@@ -17,64 +17,30 @@ import org.apache.http.params.HttpParams;
 import android.util.Log;
 
 public class HttpUtil {
-	
-	protected static final String CATEGORIA = "HttpUtil";
 
+	protected static final String CATEGORIA = "HttpUtil";
+	private static final int JSON_CONNECTION_TIMEOUT = 5000;
+	private static final int JSON_SOCKET_TIMEOUT = 5000;
+	private HttpParams httpParameters;
+	private DefaultHttpClient httpclient;
 	public static HttpUtil instancia;
 
-	public static HttpUtil getInstance() {
+	public HttpUtil() {
+		httpParameters = new BasicHttpParams();
+		setTimeOut(httpParameters);
+		httpclient = new DefaultHttpClient(httpParameters);
+	}
+
+	public static DefaultHttpClient getInstance() {
 		if (instancia == null)
 			instancia = new HttpUtil();
-		return instancia;
+		return instancia.httpclient;
 	}
 
-	public String httpGetJson(String url) {
-		String urlString = url;
-		HttpParams httpParameters = new BasicHttpParams();
-		HttpConnectionParams.setConnectionTimeout(httpParameters, 5000);
-		HttpConnectionParams.setSoTimeout(httpParameters, 5000);
-		HttpClient httpclient = new DefaultHttpClient(httpParameters);
-		HttpGet httpget = new HttpGet(urlString);
-		try {
-			HttpResponse response = httpclient.execute(httpget);
-			HttpEntity entity = response.getEntity();
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				String json = getStringFromInputStream(instream);
-				instream.close();
-				return json;
-			}
-		} catch (IOException e) {
-			Log.e(CATEGORIA, e.getMessage(), e);
-		}
-		return null;
-
+	private void setTimeOut(HttpParams params) {
+		HttpConnectionParams.setConnectionTimeout(params,
+				JSON_CONNECTION_TIMEOUT);
+		HttpConnectionParams.setSoTimeout(params, JSON_SOCKET_TIMEOUT);
 	}
 
-	private String getStringFromInputStream(InputStream is) {
-		BufferedReader br = null;
-		StringBuilder sb = new StringBuilder();
-
-		String line;
-		try {
-
-			br = new BufferedReader(new InputStreamReader(is));
-			while ((line = br.readLine()) != null) {
-				sb.append(line);
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		return sb.toString();
-	}
 }

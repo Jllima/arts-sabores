@@ -13,6 +13,7 @@ import br.com.artssabores.activity.ProdutoViewActivity;
 import br.com.artssabores.adapter.ProdutoListAdapter;
 import br.com.artssabores.model.Produto;
 import br.com.artssabores.util.HttpUtil;
+import br.com.artssabores.util.WebServiceCliente;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -94,10 +95,10 @@ public class ProdutosFragment extends Fragment {
 
 		@Override
 		protected String doInBackground(String... params) {
-			String urlString = "http://192.168.43.119:8080/apirest/services/produtos/listargson";
+			String urlString = "http://192.168.25.15:8080/apirest/services/produtos/listargson";
 
 			try {
-				String json = HttpUtil.getInstance().httpGetJson(urlString);
+				String json = new WebServiceCliente().get(urlString);
 				produtoList = getProdutos(json);
 			} catch (Throwable e) {
 				Log.i("ERRO", e.getMessage(), e);
