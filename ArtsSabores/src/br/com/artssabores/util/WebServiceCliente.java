@@ -13,6 +13,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 
+import br.com.artssabores.database.DatabaseHandler;
+
+import android.content.Context;
 import android.util.Log;
 
 public class WebServiceCliente {
@@ -50,6 +53,7 @@ public class WebServiceCliente {
 			HttpEntity entity = response.getEntity();
 
 			if (entity != null) {
+				result = new String[2];
 				result[0] = String.valueOf(response.getStatusLine()
 						.getStatusCode());
 				InputStream inStream = entity.getContent();
@@ -104,4 +108,25 @@ public class WebServiceCliente {
 		return new String(baos.toByteArray());
 	}
 
+	/**
+	 * Function get Login status
+	 * */
+	public boolean isClienteLoggedIn(Context context) {
+		DatabaseHandler db = new DatabaseHandler(context);
+		int count = db.getRowCount();
+		if (count > 0) {
+			// user logged in
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Function to logout user Reset Database
+	 * */
+	public boolean logoutClient(Context context) {
+		DatabaseHandler db = new DatabaseHandler(context);
+		db.resetTables();
+		return true;
+	}
 }

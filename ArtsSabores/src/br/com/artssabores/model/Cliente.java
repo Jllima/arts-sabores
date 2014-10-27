@@ -11,6 +11,7 @@ public class Cliente {
 	private String nome;
 	private String email;
 	private String endereco;
+	private String senha;
 	private Calendar dataDeCadastro;
 	private byte[] foto;
 
@@ -18,8 +19,16 @@ public class Cliente {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cliente(String nome, String endereco) {
+	public Cliente(String nome, String email, String senha, String endereco) {
 		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.endereco = endereco;
+	}
+	public Cliente(Long id,String nome, String email,String endereco) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
 		this.endereco = endereco;
 	}
 
@@ -61,6 +70,22 @@ public class Cliente {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Calendar getDataDeCadastro() {
+		return dataDeCadastro;
+	}
+
+	public void setDataDeCadastro(Calendar dataDeCadastro) {
+		this.dataDeCadastro = dataDeCadastro;
 	}
 
 }
