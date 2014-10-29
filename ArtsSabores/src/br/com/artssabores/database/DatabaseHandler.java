@@ -23,6 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// Login Table Columns names
 	private static final String KEY_ID = "id";
+	private static final String KEY_UID = "uid";
 	private static final String KEY_NAME = "name";
 	private static final String KEY_EMAIL = "email";
 	private static final String KEY_ENDERECO = "endereco";
@@ -37,9 +38,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String CREATE_CLIENTE_TABLE = "CREATE TABLE " + TABLE_CLIENTE + "("
-				+ KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-				+ KEY_EMAIL + " TEXT UNIQUE," + KEY_ENDERECO + " TEXT,"
-				+ KEY_DATA_DE_CADASTRO + " NUMERIC," + ")";
+				+ KEY_ID + " INTEGER PRIMARY KEY," 
+				+ KEY_UID + " TEXT,"
+				+ KEY_NAME + " TEXT," 
+				+ KEY_EMAIL + " TEXT UNIQUE,"
+				+ KEY_ENDERECO + " TEXT," 
+				+ KEY_DATA_DE_CADASTRO + " NUMERIC"
+				+ ")";
 		db.execSQL(CREATE_CLIENTE_TABLE);
 	}
 
@@ -55,7 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	public void addCliente(Cliente c) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(KEY_ID, c.getId());
+		values.put(KEY_UID, c.getUid());
 		values.put(KEY_NAME, c.getNome());
 		values.put(KEY_EMAIL, c.getEmail());
 		values.put(KEY_ENDERECO, c.getEndereco());
@@ -75,10 +80,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		// Move to first row
 		cursor.moveToFirst();
 		if (cursor.getCount() > 0) {
-			c.setId(cursor.getLong(0));
-			c.setNome(cursor.getString(1));
-			c.setEmail(cursor.getString(2));
-			c.setEndereco(cursor.getString(3));
+			c.setUid(cursor.getString(1));
+			c.setNome(cursor.getString(2));
+			c.setEmail(cursor.getString(3));
+			c.setEndereco(cursor.getString(4));
 		}
 		cursor.close();
 		db.close();

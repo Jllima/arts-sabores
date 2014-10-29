@@ -8,6 +8,8 @@ import br.com.artssabores.database.DatabaseHandler;
 import br.com.artssabores.model.Cliente;
 import br.com.artssabores.util.WebServiceCliente;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -61,12 +63,23 @@ public class LoginActivity extends Activity {
 	}
 
 	class LoginTask extends AsyncTask<Void, Void, Void> {
+		
+		private final ProgressDialog dialog = new ProgressDialog(
+				LoginActivity.this);
+		
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			dialog.setMessage("Aguarde..");
+			dialog.show();
+		}
 
+		
 		@Override
 		protected Void doInBackground(Void... params) {
 			String email = inputEmail.getText().toString();
 			String password = inputPassword.getText().toString();
-			String urlString = "http://192.168.43.164:8080/apirest/services/clientes/login/"
+			String urlString = "clientes/login/"
 					+ email + "/" + password;
 			try {
 				String json = new WebServiceCliente().get(urlString);
@@ -81,10 +94,21 @@ public class LoginActivity extends Activity {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+			WebServiceCliente ws = new WebServiceCliente();
+			dialog.dismiss();
 			if (cliente != null) {
+				DatabaseHandler db = new DatabaseHandler(getApplicationContext());
+				ws.logoutClient(getApplicationContext());
+				db.addCliente(cliente);
+				Log.i("Busacar cliente: ",db.getUserDetails().toString());
 				Intent it = new Intent(getApplicationContext(),MainActivity.class);
 				startActivity(it);	
+			}else{
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						LoginActivity.this).setTitle("ATENÇÂO")
+						.setMessage("Login ou senha incorretos")
+						.setPositiveButton("OK", null);
+				builder.create().show();
 			}
 			
 		}

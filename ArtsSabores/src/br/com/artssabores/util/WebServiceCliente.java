@@ -31,9 +31,10 @@ public class WebServiceCliente {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
+	static String uri = "http://192.168.43.221:8080/apirest/services/";
 
 	public String get(String url) {
-		String urlString = url;
+		String urlString = uri+url;
 		HttpGet httpget = new HttpGet(urlString);
 		HttpResponse response;
 		try {
@@ -55,7 +56,7 @@ public class WebServiceCliente {
 	public String[] post(String url, String json) {
 		String[] result = new String[2];
 		try {
-			HttpPost httpPost = new HttpPost(new URI(url));
+			HttpPost httpPost = new HttpPost(new URI(uri+url));
 			httpPost.setHeader("Content-type", "application/json");
 			StringEntity sEntity = new StringEntity(json, "UTF-8");
 			httpPost.setEntity(sEntity);

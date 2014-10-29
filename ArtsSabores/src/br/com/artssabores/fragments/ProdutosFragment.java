@@ -95,7 +95,7 @@ public class ProdutosFragment extends Fragment {
 
 		@Override
 		protected String doInBackground(String... params) {
-			String urlString = "http://192.168.25.4:8080/apirest/services/produtos/listargson";
+			String urlString = "produtos/listargson";
 
 			try {
 				String json = new WebServiceCliente().get(urlString);

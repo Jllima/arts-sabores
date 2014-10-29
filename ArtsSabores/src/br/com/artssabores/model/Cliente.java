@@ -3,7 +3,6 @@ package br.com.artssabores.model;
 import java.io.Serializable;
 import java.util.Calendar;
 
-
 public class Cliente {
 
 	private Long id;
@@ -25,7 +24,8 @@ public class Cliente {
 		this.senha = senha;
 		this.endereco = endereco;
 	}
-	public Cliente(Long id,String nome, String email,String endereco) {
+
+	public Cliente(Long id, String nome, String email, String endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
@@ -96,4 +96,9 @@ public class Cliente {
 		this.uid = uid;
 	}
 
+	@Override
+	public String toString() {
+		
+		return "UID: "+this.uid+" NOME: "+this.nome+" EMAIL: "+this.email;	
+				}
 }
