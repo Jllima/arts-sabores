@@ -98,7 +98,7 @@ public class RegisterActivity extends Activity {
 			Log.d("Aqui", clienteJSON);
 
 			String[] resposta = new WebServiceCliente()
-					.post("http://192.168.25.4:8080/apirest/services/clientes/inserir",
+					.post("http://192.168.43.164:8080/apirest/services/clientes/inserir",
 							clienteJSON);
 
 			return resposta;

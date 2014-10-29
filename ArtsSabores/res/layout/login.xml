@@ -54,6 +54,7 @@
                 android:textColor="#372c24" />
 
             <EditText
+                android:id="@+id/loginEmail"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dip"
@@ -68,6 +69,7 @@
                 android:textColor="#372c24" />
 
             <EditText
+                android:id="@+id/loginPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dip"

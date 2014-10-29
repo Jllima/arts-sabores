@@ -7,7 +7,7 @@ import java.util.Calendar;
 public class Cliente {
 
 	private Long id;
-
+	private String uid;
 	private String nome;
 	private String email;
 	private String endereco;
@@ -86,6 +86,14 @@ public class Cliente {
 
 	public void setDataDeCadastro(Calendar dataDeCadastro) {
 		this.dataDeCadastro = dataDeCadastro;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
 }
