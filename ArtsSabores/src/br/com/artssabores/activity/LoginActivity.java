@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import br.com.artssabores.R;
 import br.com.artssabores.database.DatabaseHandler;
+import br.com.artssabores.library.ClientFunctions;
 import br.com.artssabores.model.Cliente;
 import br.com.artssabores.util.WebServiceCliente;
 import android.app.Activity;
@@ -94,11 +95,10 @@ public class LoginActivity extends Activity {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			WebServiceCliente ws = new WebServiceCliente();
 			dialog.dismiss();
 			if (cliente != null) {
 				DatabaseHandler db = new DatabaseHandler(getApplicationContext());
-				ws.logoutClient(getApplicationContext());
+				ClientFunctions.getInstance().logoutClient(getApplicationContext());
 				db.addCliente(cliente);
 				Log.i("Busacar cliente: ",db.getUserDetails().toString());
 				Intent it = new Intent(getApplicationContext(),MainActivity.class);

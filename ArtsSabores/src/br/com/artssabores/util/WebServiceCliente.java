@@ -31,7 +31,7 @@ public class WebServiceCliente {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-	static String uri = "http://192.168.43.221:8080/apirest/services/";
+	static String uri = "http://192.168.43.164:8080/apirest/services/";
 
 	public String get(String url) {
 		String urlString = uri+url;
@@ -121,25 +121,4 @@ public class WebServiceCliente {
 		return new String(baos.toByteArray());
 	}
 
-	/**
-	 * Function get Login status
-	 * */
-	public boolean isClienteLoggedIn(Context context) {
-		DatabaseHandler db = new DatabaseHandler(context);
-		int count = db.getRowCount();
-		if (count > 0) {
-			// user logged in
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Function to logout user Reset Database
-	 * */
-	public boolean logoutClient(Context context) {
-		DatabaseHandler db = new DatabaseHandler(context);
-		db.resetTables();
-		return true;
-	}
 }

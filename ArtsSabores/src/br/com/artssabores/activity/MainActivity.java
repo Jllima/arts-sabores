@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import br.com.artssabores.R;
 import br.com.artssabores.adapter.NavDrawerListAdapter;
+import br.com.artssabores.database.DatabaseHandler;
 import br.com.artssabores.fragments.FindPeopleFragment;
 import br.com.artssabores.fragments.HomeFragment;
 import br.com.artssabores.fragments.ProdutosFragment;
+import br.com.artssabores.library.ClientFunctions;
+import br.com.artssabores.model.Cliente;
 import br.com.artssabores.model.NavDrawerItem;
 
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -43,6 +46,7 @@ public class MainActivity extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+	private String nomeCliente;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,21 +66,34 @@ public class MainActivity extends Activity {
 		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 
 		navDrawerItems = new ArrayList<NavDrawerItem>();
+		
+		//caso o cliente esteja logado, recupere no bando de dados o seu estado
+		ClientFunctions functions = new ClientFunctions();
+		if (functions.isClienteLoggedIn(getApplicationContext())) {
+			DatabaseHandler dataBase = new DatabaseHandler(getApplicationContext());
+			Cliente cliente = dataBase.getUserDetails();
+			nomeCliente = cliente.getNome();
+		}
 
 		// adding nav drawer items to array
 		// Home
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+		navDrawerItems.add(new NavDrawerItem(nomeCliente, navMenuIcons
+				.getResourceId(0, -1)));
 		// Find People
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
+				.getResourceId(1, -1)));
 		// Photos
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-		/*/ Communities, Will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
-		// Pages
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-		// What's hot, We  will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
-		*/
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
+				.getResourceId(2, -1)));
+		/*
+		 * / Communities, Will add a counter here navDrawerItems.add(new
+		 * NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1),
+		 * true, "22")); // Pages navDrawerItems.add(new
+		 * NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+		 * // What's hot, We will add a counter here navDrawerItems.add(new
+		 * NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1),
+		 * true, "50+"));
+		 */
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -93,9 +110,11 @@ public class MainActivity extends Activity {
 		getActionBar().setHomeButtonEnabled(true);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, //nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for accessibility
-				R.string.app_name // nav drawer close - description for accessibility
+				R.drawable.ic_drawer, // nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for
+									// accessibility
+				R.string.app_name // nav drawer close - description for
+									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
