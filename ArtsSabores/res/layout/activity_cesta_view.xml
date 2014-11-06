@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/braid_darck" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/imgPackage"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/imgPackage_layout_height"
+            android:background="@drawable/seletor_item_butao_lista"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_img" />
+
+        <TextView
+            android:id="@+id/txtCabecalho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Testando cabecalho"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <RelativeLayout
+            android:id="@+id/layout_Included"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgPackage"
+            android:background="@color/braid_darck"
+            android:padding="6dp" >
+
+            <RelativeLayout
+                android:id="@+id/layout_dados"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" >
+
+                <TextView
+                    android:id="@+id/txtRodape"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Testando rodape"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </RelativeLayout>
+            
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>
