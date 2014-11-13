@@ -3,10 +3,10 @@ package br.com.artssabores.model;
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class Cliente {
+public class Cliente implements Serializable{
 
-	private Long id;
-	private String uid;
+	private Long uid;
+	private String id;
 	private String nome;
 	private String email;
 	private String endereco;
@@ -25,19 +25,19 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-	public Cliente(Long id, String nome, String email, String endereco) {
-		this.id = id;
+	public Cliente(Long uid, String nome, String email, String endereco) {
+		this.uid = uid;
 		this.nome = nome;
 		this.email = email;
 		this.endereco = endereco;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getUid() {
+		return uid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUid(Long id) {
+		this.uid = id;
 	}
 
 	public String getNome() {
@@ -88,17 +88,16 @@ public class Cliente {
 		this.dataDeCadastro = dataDeCadastro;
 	}
 
-	public String getUid() {
-		return uid;
+	public String getId() {
+		return id;
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setId(String uid) {
+		this.id = uid;
 	}
 
 	@Override
 	public String toString() {
-		
-		return "UID: "+this.uid+" NOME: "+this.nome+" EMAIL: "+this.email;	
-				}
+		return "ID "+id+" Nome "+nome+" Senha "+senha+" Email "+email+" End "+endereco;
+	}
 }

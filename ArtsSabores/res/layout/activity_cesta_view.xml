@@ -51,7 +51,46 @@
                     android:textSize="18sp"
                     android:textStyle="italic" />
             </RelativeLayout>
-            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_Included2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_Included"
+            android:background="@color/braid_darck"
+            android:padding="6dp" >
+
+            <RelativeLayout
+                android:id="@+id/layout_dados2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" >
+
+                <TextView
+                    android:id="@+id/txtPreco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="preco"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_Included2"
+            android:background="@color/braid_darck"
+            android:padding="6dp" >
+
+            <Button
+                android:id="@+id/btnPedido"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="Fazer pedido" />
         </RelativeLayout>
     </RelativeLayout>
 

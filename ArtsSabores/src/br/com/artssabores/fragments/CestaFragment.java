@@ -58,8 +58,9 @@ public class CestaFragment extends Fragment {
 				//String s = p.getNome();
 				
 				Intent it = new Intent(getActivity(),CestaViewActivity.class);
-				it.putExtra("Nome", cestaList.get(position).getNome());
-				it.putExtra("Descricao", cestaList.get(position).getDescricao());
+				it.putExtra("Cesta", cestaList.get(position));
+				//it.putExtra("Nome", cestaList.get(position).getNome());
+				//it.putExtra("Descricao", cestaList.get(position).getDescricao());
 				//it.putExtra("Preco", cestaList.get(position).getPreco());
 				startActivity(it);
 
@@ -127,6 +128,7 @@ public class CestaFragment extends Fragment {
 				cesta = new JSONObject(cestasJson.getString(i));
 				Log.i("Cesta encontrada: ", "nome " + cesta.getString("nome"));
 				Cesta objCesta = new Cesta();
+				objCesta.setId(cesta.getString("id"));
 				objCesta.setNome(cesta.getString("nome"));
 				objCesta.setDescricao(cesta.getString("descricao"));
 				objCesta.setPreco((Double) cesta.get("preco"));

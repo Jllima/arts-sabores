@@ -119,11 +119,12 @@ public class LoginActivity extends Activity {
 		Cliente c = new Cliente();
 		try {
 			JSONObject josn_cliente = new JSONObject(json);
-			c.setUid(josn_cliente.getString("id"));
+			c.setId(josn_cliente.getString("id"));
 			c.setNome(josn_cliente.getString("nome"));
 			c.setEmail(josn_cliente.getString("email"));
 			c.setEndereco(josn_cliente.getString("endereco"));
 			return c;
+			
 		} catch (JSONException e) {
 			Log.e("JSON", "Erro no parse do JSON", e);
 		}

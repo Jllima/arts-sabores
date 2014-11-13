@@ -1,16 +1,27 @@
 package br.com.artssabores.model;
 
-public class Cesta {
-	Long id;
+import java.io.Serializable;
+
+public class Cesta implements Serializable{
+	Long uid;
+	String id;
 	String nome;
 	String descricao;
 	Double preco;
 
-	public Long getId() {
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long id) {
+		this.uid = id;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

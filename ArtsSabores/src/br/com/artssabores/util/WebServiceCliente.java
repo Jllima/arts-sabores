@@ -31,7 +31,7 @@ public class WebServiceCliente {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-	static String uri = "http://192.168.43.164:8080/apirest/services/";
+	static String uri = "http://192.168.43.67:8080/apirest/services/";
 
 	public String get(String url) {
 		String urlString = uri+url;
