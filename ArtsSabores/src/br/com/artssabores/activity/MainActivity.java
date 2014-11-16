@@ -8,6 +8,7 @@ import br.com.artssabores.database.DatabaseHandler;
 import br.com.artssabores.fragments.CestaFragment;
 import br.com.artssabores.fragments.FindPeopleFragment;
 import br.com.artssabores.fragments.HomeFragment;
+import br.com.artssabores.fragments.PedidoFragment;
 import br.com.artssabores.fragments.ProdutosFragment;
 import br.com.artssabores.library.ClientFunctions;
 import br.com.artssabores.model.Cliente;
@@ -209,7 +210,7 @@ public class MainActivity extends Activity {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			fragment = new FindPeopleFragment();
+			fragment = new PedidoFragment();
 			break;
 		case 2:
 			fragment = new CestaFragment();

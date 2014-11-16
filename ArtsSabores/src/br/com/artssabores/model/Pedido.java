@@ -11,6 +11,8 @@ public class Pedido implements Serializable{
 
 	private Cesta cesta;
 	
+	private String endereco;
+	
 	public Pedido() {
 		// TODO Auto-generated constructor stub
 	}
@@ -18,6 +20,7 @@ public class Pedido implements Serializable{
 	public Pedido(Cliente cliente, Cesta cesta) {
 		this.cliente = cliente;
 		this.cesta = cesta;
+		
 	}
 
 	public Cliente getCliente() {
@@ -42,5 +45,13 @@ public class Pedido implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 }

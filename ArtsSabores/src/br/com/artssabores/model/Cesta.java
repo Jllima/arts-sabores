@@ -3,11 +3,12 @@ package br.com.artssabores.model;
 import java.io.Serializable;
 
 public class Cesta implements Serializable{
-	Long uid;
-	String id;
-	String nome;
-	String descricao;
-	Double preco;
+	private Long uid;
+	private String id;
+	private String nome;
+	private String image;
+	private String descricao;
+	private Double preco;
 
 	public Long getUid() {
 		return uid;
@@ -47,6 +48,14 @@ public class Cesta implements Serializable{
 
 	public void setPreco(Double preco) {
 		this.preco = preco;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

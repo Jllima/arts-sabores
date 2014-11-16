@@ -13,7 +13,7 @@
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item>Usuario</item>
-        <item>Cadastrar</item>
+        <item>Visualizar Pedidos</item>
         <item>Fazer pedido</item>
         <item>Comunidades</item>
         <item>Paginas</item>
@@ -23,9 +23,9 @@
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_photos</item>
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_people</item>
+        <item>@drawable/ic_user</item>
+        <item>@drawable/ic_view</item>
+        <item>@drawable/ic_pedido</item>
         <item>@drawable/ic_communities</item>
         <item>@drawable/ic_pages</item>
         <item>@drawable/ic_whats_hot</item>
@@ -33,5 +33,41 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    
+
+    <string name="shared">Shared</string>
+    <string name="favorite">favorite</string>    
+    
+    <string name="buy">Buy</string>    
+    <string name="description">Descrição</string>        
+    
+    <string name="done">Buy</string>
+    <string name="discard">Discard</string>
+        
+    <string name="apartment">Apartment</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="giveaways">Giveaways</string>
+    <string name="ingress">Ingress</string>
+    <string name="air_travel">Air Travel</string>
+    <string name="transfer">Transfer</string>
+    
+    <string name="price">Price:</string>        
+    
+    
+    
+    <string name="titulo_user">Rudson Lima</string>
+    <string name="subtitulo_user">rudsonlive@gmail.com</string>   
+
+    <string name="tab_one">Packages</string>
+    <string name="tab_two">Favorites</string>
+    
+    <string name="thanks_for_buying">Thanks for buying</string>
+        
+    <string name="title_package_details">Package Details</string>        
+    
+    <string name="included_package">Included in the package</string>        
+    
+    <string name="connection_unavailable">Connection unavailable, please activate your mobile network or Wi-Fi</string>
+    <string name="ops">Ops, Do not cry o-O!</string>   
 
 </resources>

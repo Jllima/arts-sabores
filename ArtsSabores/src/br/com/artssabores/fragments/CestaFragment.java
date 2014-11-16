@@ -11,6 +11,7 @@ import br.com.artssabores.R;
 import br.com.artssabores.activity.CestaViewActivity;
 import br.com.artssabores.activity.ProdutoViewActivity;
 import br.com.artssabores.adapter.CestaListAdapter;
+import br.com.artssabores.adapter.PedidoPackageAdaper;
 import br.com.artssabores.model.Cesta;
 import br.com.artssabores.util.WebServiceCliente;
 import android.annotation.SuppressLint;
@@ -26,13 +27,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 @SuppressLint("NewApi")
 public class CestaFragment extends Fragment {
 	private ProgressDialog dialog;
 
-	CestaListAdapter adaptador;
+	PedidoPackageAdaper adaptador;
 
 	List<Cesta> cestaList;
 
@@ -48,27 +50,20 @@ public class CestaFragment extends Fragment {
 		new CestaJson().execute();
 		View view = inflater.inflate(R.layout.fragment_cesta, container, false);
 		lv = (ListView) view.findViewById(R.id.cesta_list);
-		
+
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				//Produto p = (Produto) adaptador.getItem(position);
-				//String s = p.getNome();
-				
-				Intent it = new Intent(getActivity(),CestaViewActivity.class);
+
+				Intent it = new Intent(getActivity(), CestaViewActivity.class);
 				it.putExtra("Cesta", cestaList.get(position));
-				//it.putExtra("Nome", cestaList.get(position).getNome());
-				//it.putExtra("Descricao", cestaList.get(position).getDescricao());
-				//it.putExtra("Preco", cestaList.get(position).getPreco());
 				startActivity(it);
 
-				//Toast.makeText(getActivity(), "Contato selecionado: " + s,
-					//	Toast.LENGTH_SHORT).show();
 			}
 		});
-		
+
 		return view;
 	}
 
@@ -102,7 +97,8 @@ public class CestaFragment extends Fragment {
 			super.onPostExecute(result);
 			dialog.dismiss();
 			if (cestaList.size() > 0) {
-				adaptador = new CestaListAdapter(getActivity(), cestaList);
+				adaptador = new PedidoPackageAdaper(getActivity(), cestaList,
+						null);
 				lv.setAdapter(adaptador);
 			} else {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -132,6 +128,8 @@ public class CestaFragment extends Fragment {
 				objCesta.setNome(cesta.getString("nome"));
 				objCesta.setDescricao(cesta.getString("descricao"));
 				objCesta.setPreco((Double) cesta.get("preco"));
+				objCesta.setImage(cesta.getString("image"));
+				Log.i("Image", objCesta.getImage());
 				cestas.add(objCesta);
 			}
 

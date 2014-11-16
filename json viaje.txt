@@ -1,0 +1,11 @@
+{
+"pacotes": [{
+  "id": 1, "name": "Buraco do bolso do Gorio", "people": "1 Pessoa", "value": 3200, "image": "https://lh3.googleusercontent.com/-PYC-wp1YmYk/UvvOCEHTioI/AAAAAAAAALQ/LCu1W7yW58Q/s369/00.png", "description": "Não perca mais tempo e venha se refrescar no Buraco da Mãe Mar. Aqui você irá esquecer todos os problemas e sairá com todas as suas energias renovadas. Tá esperando o quê? :D", "lat" : -3.8304787, "lng" : -38.5704178
+}, {
+  "id": 2, "name": "Floresta Dançante", "people": "3 Pessoas", "value": 1500, "image": "https://lh5.googleusercontent.com/-8c18UJb69Fc/UvvOCbXI1wI/AAAAAAAAALY/3KGbNxPP_H4/s369/01.png", "description": "Já sabe dançar? Não! Tá esperando o quê? Venha para Floresta Dançante, aqui você vai aprender todos os tipos de dança desse e do outro mundo o-O. Não perca essa grande oportunidade. Pegue seu parceiro ou sua parceira e venha festejar com as árvores bailarinas.", "lat" : -3.8304787, "lng" : -38.5704178
+}, {
+  "id": 3, "name": "Londres", "people": "4 Pessoas", "value": 5000, "image": "https://lh6.googleusercontent.com/-j4uNhMTssJs/UvvOFiVk05I/AAAAAAAAAMU/E5s6q5WpQI4/s369/09.png", "description": "A terra da rainha conhecida pelo céu quase sempre nublado e o tradicional chá da tarde tem muito mais a oferecer do que apenas os prédios da realeza. Quem conhece Londres afirma sofrer uma espécie de abstinência ao voltar de viagem. A explicação é simples: a capital da Inglaterra detém uma atmosfera única, pois representa o casamento perfeito entre a nova e a antiga Europa, onde os rituais da monarquia convivem em harmonia com agitados pubs, turistas de todas as partes do mundo e modernas construções.", "lat" : -3.8304787, "lng" : -38.5704178
+}, {
+  "id": 4, "name": "Casa do Aladim", "people": "2 Pessoas", "value": 8500, "image": "https://lh6.googleusercontent.com/-cLBIKXgWiKg/UvvOCN8GilI/AAAAAAAAALM/UohJm1gylX8/s369/02.png", "description": "Já imaginou você assistindo os jogos da copa em um tapete mágico? Ou brincado com o Abu, correndo do tigre Rajah e realizando desejos com o Gênio. Aladim e Yasmine estão esperando por você \o/. Mas tenha cuidado com o Jafar ¬¬*.", "lat" : -3.8304787, "lng" : -38.5704178
+}]
+}

@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="4dip" >
+    android:padding="8dp" >
 
     <ImageView
         android:id="@+id/icone"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_marginRight="4dip"
-        android:contentDescription="@string/desc_list_item_icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp"
         android:src="@drawable/ic_pages" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icone"
+        android:layout_toRightOf="@+id/icone"
+        android:textSize="@dimen/title"
+        android:textColor="@color/braid_darck"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/subtitulo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_below="@+id/titulo"
+        android:layout_marginTop="1dip"
+        android:layout_toRightOf="@+id/icone"
+        android:textSize="@dimen/rating" />
 
-        <TextView
-            android:id="@+id/titulo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/icone"
+        android:layout_below="@+id/subtitulo"
+        android:layout_toRightOf="@+id/icone"
+        android:src="@drawable/ic_launcher" />
 
-        <TextView
-            android:id="@+id/subtitulo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:singleLine="true" />
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>
