@@ -109,7 +109,6 @@ public class CestaViewActivity extends Activity {
 			Gson gson = new Gson();
 			String objGson = gson.toJson(pedido);
 			String nova = objGson.replaceAll("\\[", "").replaceAll("\\]", "");
-			Log.i("json", nova);
 			String pedidoJSON = "{'pedido':" + nova + "}";
 			String[] response = new WebServiceCliente().post(urlString, pedidoJSON);
 			return response;

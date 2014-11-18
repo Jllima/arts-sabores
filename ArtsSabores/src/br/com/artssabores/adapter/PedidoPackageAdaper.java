@@ -65,7 +65,7 @@ public class PedidoPackageAdaper extends BaseAdapter {
 					.findViewById(R.id.txtFavorite);
 			holder.subtitulo = (TextView) convertView
 					.findViewById(R.id.txtPreco);
-			
+
 			holder.user = (TextView) convertView.findViewById(R.id.txtPeople);
 
 			if (c != null) {
@@ -75,19 +75,20 @@ public class PedidoPackageAdaper extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		//String imageUrl = "https://lh3.googleusercontent.com/-PYC-wp1YmYk/UvvOCEHTioI/AAAAAAAAALQ/LCu1W7yW58Q/s369/00.png";
-		
-		//Picasso.with(context).load(imageUrl).placeholder(R.drawable.default_img).into(holder.image);
-		
-		
+		// String imageUrl =
+		// "https://lh3.googleusercontent.com/-PYC-wp1YmYk/UvvOCEHTioI/AAAAAAAAALQ/LCu1W7yW58Q/s369/00.png";
+
+		// Picasso.with(context).load(imageUrl).placeholder(R.drawable.default_img).into(holder.image);
+
 		Cesta cesta = cestas.get(position);
-		//if (cesta.getId().equals("1")) {
-			//holder.image.setBackgroundResource(R.drawable.cesta);
-			String imageUrl = "https://lh3.googleusercontent.com/-PYC-wp1YmYk/UvvOCEHTioI/AAAAAAAAALQ/LCu1W7yW58Q/s369/00.png";
-			//Log.i("imagen", cesta.getImage());
-			Picasso.with(context).load(cesta.getImage()).placeholder(R.drawable.default_img).into(holder.image);
-		//}
-		
+		// if (cesta.getId().equals("1")) {
+		// holder.image.setBackgroundResource(R.drawable.cesta);
+		String imageUrl = "https://lh3.googleusercontent.com/-PYC-wp1YmYk/UvvOCEHTioI/AAAAAAAAALQ/LCu1W7yW58Q/s369/00.png";
+		// Log.i("imagen", cesta.getImage());
+		Picasso.with(context).load(cesta.getImage())
+				.placeholder(R.drawable.default_img).into(holder.image);
+		// }
+
 		holder.titulo.setText(cesta.getNome());
 		String preco = "R$ " + Double.toString(cesta.getPreco());
 		holder.subtitulo.setText(preco);

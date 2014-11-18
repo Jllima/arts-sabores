@@ -203,27 +203,18 @@
             <RelativeLayout
                 android:id="@+id/layout_dados3"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white" >
-
-                <TextView
-                    android:id="@+id/txtEndreco"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text="Digite o endreço de entrega"
-                    android:textColor="#372c24"
-                    android:textSize="18sp"
-                    android:textStyle="italic" />
+                android:layout_height="wrap_content" >
 
                 <EditText
                     android:id="@+id/txtEnd"
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_below="@+id/txtEndreco"
-                    android:layout_marginBottom="20dip"
-                    android:layout_marginTop="3dp"
-                    android:singleLine="true" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:background="@drawable/edittext_bottom_bg"
+                    android:drawableLeft="@drawable/ic_action_about"
+                    android:hint="Digite o endereço de entrega"
+                    android:padding="10dp"
+                    android:textColorHint="#bbbbbb" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -236,9 +227,11 @@
 
             <Button
                 android:id="@+id/btnPedido"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_default_bg"
+                android:padding="10dp"
                 android:text="Fazer pedido" />
         </RelativeLayout>
     </RelativeLayout>
