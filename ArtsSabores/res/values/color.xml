@@ -36,7 +36,11 @@
     <color name="braid_darck2">#E8DDDD</color>
     <color name="braid_darck3">#F4EEEE</color>
     <color name="background_tab_pressed">#6633B5E5</color>
-	<!-- braid dark - #D6C2C2 -->
-	
-	<color name="genre">#666666</color>
+    <!-- braid dark - #D6C2C2 -->
+    <!-- slide view -->
+    <color name="holo_blue_dark">#ff0099cc</color>
+    <color name="view_divider_color">#BABABA</color>
+    <color name="view_divider_color_2">#DADADA</color>
+    <color name="genre">#666666</color>
+
 </resources>

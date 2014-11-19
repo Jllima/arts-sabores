@@ -7,6 +7,7 @@
     <!-- Packages Details - imgPackage -->
     <dimen name="imgPackage_layout_height">200dp</dimen>
     <dimen name="imgPackage_layout_height2">150dp</dimen>
+    <dimen name="imgPackage_layout_height3">100dp</dimen>    
     <dimen name="title">17dp</dimen>
     <dimen name="rating">15dip</dimen>
     <dimen name="genre">13dip</dimen>
