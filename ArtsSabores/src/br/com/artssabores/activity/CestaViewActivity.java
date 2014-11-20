@@ -121,7 +121,7 @@ public class CestaViewActivity extends Activity {
 			if (!result[0].equals("0") && !result[1].equals("Falha de rede!")) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						CestaViewActivity.this).setTitle("Obrigado")
-						.setMessage("pedido realizado com secesso!!")
+						.setMessage("pedido realizado com sucesso!!")
 						.setPositiveButton("OK", null);
 				builder.create().show();
 			} else {

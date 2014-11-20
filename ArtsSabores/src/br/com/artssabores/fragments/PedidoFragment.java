@@ -110,7 +110,7 @@ public class PedidoFragment extends Fragment {
 						getActivity())
 						.setTitle("ATENÇÂO")
 						.setMessage(
-								"Não foi possivel carregar as cestas via ws, sera apresentado um exemplo teste")
+								"Você não possui pedidos")
 						.setPositiveButton("OK", null);
 				builder.create().show();
 			}
