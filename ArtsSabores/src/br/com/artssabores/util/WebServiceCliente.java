@@ -12,6 +12,7 @@ import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -31,7 +32,7 @@ public class WebServiceCliente {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-	static String uri = "http://192.168.25.5:8080/apirest/services/";
+	static String uri = "http://192.168.43.164:8080/apirest/services/";
 
 	public String get(String url) {
 		String urlString = uri+url;
@@ -63,9 +64,13 @@ public class WebServiceCliente {
 
 			HttpResponse response;
 			response = HttpUtil.getInstance().execute(httpPost);
-			HttpEntity entity = response.getEntity();
+			StatusLine statusLine = response.getStatusLine();
+			int statusCode = statusLine.getStatusCode();
+			
+//			HttpEntity entity = response.getEntity();
 
-			if (entity != null) {
+			if (statusCode == 201) {
+				HttpEntity entity = response.getEntity();
 				result = new String[2];
 				result[0] = String.valueOf(response.getStatusLine()
 						.getStatusCode());
@@ -74,6 +79,9 @@ public class WebServiceCliente {
 				inStream.close();
 				Log.d("post", "Result from post JsonPost : " + result[0]
 						+ " : " + result[1]);
+			}else if(statusCode == 409){
+				result[0] = "0";
+				result[1] = "email existente";
 			}
 		} catch (Exception e) {
 			Log.e("NGVL", "Falha ao acessar Web service", e);

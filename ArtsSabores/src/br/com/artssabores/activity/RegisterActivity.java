@@ -124,7 +124,15 @@ public class RegisterActivity extends Activity {
 						.setPositiveButton("OK", null);
 				builder.create().show();
 
-			} else {
+			}else if (result[0].equals("0") && result[1].equals("email existente")) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(
+						RegisterActivity.this).setTitle("ATENÇÂO")
+						.setMessage("email já existe!")
+						.setPositiveButton("OK", null);
+				builder.create().show();
+			} 
+			
+			else {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						RegisterActivity.this).setTitle("ATENÇÂO")
 						.setMessage("Não foi possivel registar")
